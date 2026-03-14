@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs on Back Muscles Quiz</title>
+    <style>
+        :root {
+            --bg-color: #f5f7fa;
+            --container-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --primary-color: #3498db;
+            --header-color: #2c3e50;
+            --secondary-text: #7f8c8d;
+            --progress-bg: #ecf0f1;
+            --question-bg: #f8f9fa;
+            --option-bg: #fff;
+            --option-hover: #f1f8ff;
+            --option-selected: #d1ecf1;
+            --correct-bg: #d4edda;
+            --correct-border: #28a745;
+            --incorrect-bg: #f8d7da;
+            --incorrect-border: #dc3545;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --button-disabled: #bdc3c7;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #ecf0f1;
+            --toggle-slider: white;
+            --toggle-text: #7f8c8d;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a2e;
+            --container-bg: #16213e;
+            --text-color: #e6e6e6;
+            --border-color: #394867;
+            --primary-color: #4cc9f0;
+            --header-color: #e6e6e6;
+            --secondary-text: #a9a9a9;
+            --progress-bg: #394867;
+            --question-bg: #1f4068;
+            --option-bg: #16213e;
+            --option-hover: #1f4068;
+            --option-selected: #1f4068;
+            --correct-bg: #2d5a2d;
+            --correct-border: #4caf50;
+            --incorrect-bg: #5a2d2d;
+            --incorrect-border: #f44336;
+            --button-bg: #4cc9f0;
+            --button-hover: #3aa8d0;
+            --button-disabled: #5d6d7e;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #394867;
+            --toggle-slider: #4cc9f0;
+            --toggle-text: #e6e6e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        h1 {
+            color: var(--header-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .author {
+            color: var(--secondary-text);
+            font-style: italic;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .description {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--toggle-text);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 60px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--toggle-slider);
+            transition: .4s;
+            border-radius: 34px;
+            z-index: 1;
+        }
+        .slider-text {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .light-text, .dark-text {
+            transition: opacity 0.3s;
+        }
+        .dark-mode .light-text {
+            opacity: 0.5;
+        }
+        .light-text {
+            opacity: 0.5;
+        }
+        .dark-mode .dark-text {
+            opacity: 1;
+        }
+        .dark-text {
+            opacity: 0.5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(52px);
+        }
+        .progress-container {
+            background: var(--progress-bg);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            height: 10px;
+            transition: background-color 0.3s;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--header-color);
+            transition: color 0.3s;
+        }
+        .question {
+            background: var(--question-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            background: var(--option-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: var(--option-hover);
+            border-color: var(--primary-color);
+        }
+        .option.selected {
+            background: var(--option-selected);
+            border-color: var(--primary-color);
+        }
+        .option.correct {
+            background: var(--correct-bg);
+            border-color: var(--correct-border);
+        }
+        .option.incorrect {
+            background: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+        .feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback.correct {
+            background: var(--correct-bg);
+            color: var(--text-color);
+            border: 1px solid var(--correct-border);
+            display: block;
+        }
+        .feedback.incorrect {
+            background: var(--incorrect-bg);
+            color: var(--text-color);
+            border: 1px solid var(--incorrect-border);
+            display: block;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: var(--button-hover);
+        }
+        button:disabled {
+            background: var(--button-disabled);
+            cursor: not-allowed;
+        }
+        .results {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--header-color);
+        }
+        .score-value {
+            font-size: 48px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .restart-btn {
+            margin-top: 20px;
+            background: var(--restart-bg);
+        }
+        .restart-btn:hover {
+            background: var(--restart-hover);
+        }
+        .review-btn {
+            margin-top: 20px;
+            background: var(--review-bg);
+        }
+        .review-btn:hover {
+            background: var(--review-hover);
+        }
+        .review-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--question-bg);
+            border-radius: 8px;
+            display: none;
+        }
+        .review-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--header-color);
+            text-align: center;
+        }
+        .review-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--incorrect-border);
+            background: var(--container-bg);
+            border-radius: 4px;
+        }
+        .review-question-number {
+            font-weight: bold;
+            color: var(--incorrect-border);
+            margin-bottom: 8px;
+        }
+        .review-question-text {
+            margin-bottom: 10px;
+        }
+        .review-answer {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .review-correct {
+            color: var(--correct-border);
+        }
+        .review-explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: var(--secondary-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MCQs on Back Muscles Quiz</h1>
+            <p class="author">Dr. Samy Salem</p>
+            <p class="description">Test your knowledge of Back Muscles: vertebral column anatomy, extrinsic and intrinsic muscles</p>
+            <div class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider">
+                        <div class="slider-text">
+                            <span class="light-text">Light</span>
+                            <span class="dark-text">Dark</span>
+                        </div>
+                    </span>
+                </label>
+            </div>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="stats">
+            <div>Question: <span id="current-question">1</span>/<span id="total-questions">45</span></div>
+            <div>Score: <span id="score">0</span>/<span id="total-score">45</span></div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score">Your Score: <span class="score-value" id="final-score">0</span>/45</div>
+            <p id="performance-message"></p>
+            <button class="restart-btn" id="restart-btn">Restart Quiz</button>
+            <button class="review-btn" id="review-btn">Review Incorrect Answers</button>
+        </div>
+
+        <div id="review-section" class="review-section">
+            <h2 class="review-title">Questions Answered Incorrectly</h2>
+            <div id="incorrect-questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data from Back Muscles PDF (extracted from 4. Back Muscles (MCQs).pdf)
+        const originalQuizData = [
+            {
+                question: "How many vertebrae is the vertebral column composed of?",
+                options: [
+                    "24-26 vertebrae",
+                    "26-28 vertebrae",
+                    "33-34 vertebrae",
+                    "40-45 vertebrae"
+                ],
+                answer: 2,
+                explanation: "Page 3"
+            },
+            {
+                question: "The vertebral column consists of 7 cervical, 12 thoracic, 5 lumbar, and which other components?",
+                options: [
+                    "4 sacral and 2 coccygeal",
+                    "5 sacral (fused) and 3-4 coccygeal (fused)",
+                    "5 sacral and 5 coccygeal",
+                    "6 sacral and 4 coccygeal"
+                ],
+                answer: 1,
+                explanation: "Page 3"
+            },
+            {
+                question: "A typical vertebra consists of which two main parts?",
+                options: [
+                    "A spine and a transverse process",
+                    "A rounded body anteriorly and a vertebral arch posteriorly",
+                    "A pair of pedicles and a pair of laminae",
+                    "A vertebral foramen and articular processes"
+                ],
+                answer: 1,
+                explanation: "Page 5"
+            },
+            {
+                question: "The vertebral arch gives rise to how many processes?",
+                options: [
+                    "Three processes",
+                    "Five processes",
+                    "Seven processes",
+                    "Nine processes"
+                ],
+                answer: 2,
+                explanation: "Page 6"
+            },
+            {
+                question: "The two superior articular processes of one vertebra articulate with the two inferior articular processes of the vertebra above to form which type of joint?",
+                options: [
+                    "Synovial joints",
+                    "Fibrous joints",
+                    "Cartilaginous joints",
+                    "Syndesmoses"
+                ],
+                answer: 0,
+                explanation: "Page 6"
+            },
+            {
+                question: "On each side, the superior vertebral notch of one vertebra and the inferior vertebral notch of an adjacent vertebra together form which structure?",
+                options: [
+                    "The vertebral foramen",
+                    "The intervertebral foramen",
+                    "The transverse foramen",
+                    "The central canal"
+                ],
+                answer: 1,
+                explanation: "Page 7"
+            },
+            {
+                question: "Which of the following are characteristics of a typical cervical vertebra (3-6)?",
+                options: [
+                    "Heart-shaped body and long, pointed spine",
+                    "Small body, large triangular vertebral foramen, and short bifid spine",
+                    "Kidney-shaped body with a dens",
+                    "Narrow circular foramen and costal facets"
+                ],
+                answer: 1,
+                explanation: "Page 11"
+            },
+            {
+                question: "The transverse processes of typical cervical vertebrae are perforated by which structure?",
+                options: [
+                    "Intervertebral foramina",
+                    "Vertebral foramina",
+                    "Nutrient foramina",
+                    "Foramen transversaria"
+                ],
+                answer: 3,
+                explanation: "Page 11"
+            },
+            {
+                question: "Which cervical vertebra is described as being ring-like with no body and no spine, consisting of two lateral masses and two arches?",
+                options: [
+                    "Axis (C2)",
+                    "Vertebra prominens (C7)",
+                    "Atlas (C1)",
+                    "Typical cervical (C3)"
+                ],
+                answer: 2,
+                explanation: "Page 14"
+            },
+            {
+                question: "The superior facet on each lateral mass of the atlas is described as which shape?",
+                options: [
+                    "Circular",
+                    "Oval",
+                    "Kidney-shaped",
+                    "Triangular"
+                ],
+                answer: 2,
+                explanation: "Page 14"
+            },
+            {
+                question: "The axis (C2) is characterized by which feature projecting upward from its body?",
+                options: [
+                    "A dens (odontoid process)",
+                    "A bifid spine",
+                    "Anterior and posterior tubercles",
+                    "Foramen transversarium"
+                ],
+                answer: 0,
+                explanation: "Page 16"
+            },
+            {
+                question: "What is the characteristic feature of the spine of the vertebra prominens (C7)?",
+                options: [
+                    "It is short and bifid",
+                    "It is long and not bifid",
+                    "It is pointed and horizontal",
+                    "It is thick and fused"
+                ],
+                answer: 1,
+                explanation: "Page 16"
+            },
+            {
+                question: "The body of a typical thoracic vertebra (2-8) is which shape?",
+                options: [
+                    "Kidney-shaped",
+                    "Circular",
+                    "Heart-shaped",
+                    "Triangular"
+                ],
+                answer: 2,
+                explanation: "Page 18"
+            },
+            {
+                question: "The transverse process of a typical thoracic vertebra has an articular facet for articulation with which structure?",
+                options: [
+                    "The head of the rib",
+                    "The tubercle of the corresponding rib",
+                    "The spinous process of the adjacent vertebra",
+                    "The lamina of the same vertebra"
+                ],
+                answer: 1,
+                explanation: "Page 18"
+            },
+            {
+                question: "Which of the following best describes the vertebral foramen of a typical thoracic vertebra?",
+                options: [
+                    "Large and triangular",
+                    "Narrow and circular",
+                    "Wide and oval",
+                    "Small and kidney-shaped"
+                ],
+                answer: 1,
+                explanation: "Page 18"
+            },
+            {
+                question: "The first thoracic vertebra (T1) has a superior complete facet for articulation with which structure?",
+                options: [
+                    "The tubercle of the 1st rib",
+                    "The head of the 2nd rib",
+                    "The transverse process of C7",
+                    "The head of the 1st rib"
+                ],
+                answer: 3,
+                explanation: "Page 23"
+            },
+            {
+                question: "The muscles of the back are divided into which two main groups?",
+                options: [
+                    "Medial and lateral muscles",
+                    "Extrinsic and intrinsic muscles",
+                    "Anterior and posterior muscles",
+                    "Axial and appendicular muscles"
+                ],
+                answer: 1,
+                explanation: "Page 25"
+            },
+            {
+                question: "The extrinsic back muscles are further subdivided into which two groups?",
+                options: [
+                    "Superficial and deep muscles",
+                    "Medial and lateral muscles",
+                    "Upper and lower muscles",
+                    "Superficial and intermediate muscles"
+                ],
+                answer: 3,
+                explanation: "Page 25"
+            },
+            {
+                question: "Which of the following is NOT a superficial extrinsic back muscle?",
+                options: [
+                    "Trapezius",
+                    "Latissimus dorsi",
+                    "Serratus posterior superior",
+                    "Rhomboids"
+                ],
+                answer: 2,
+                explanation: "Page 27"
+            },
+            {
+                question: "The superficial extrinsic back muscles receive their nerve supply primarily from which source?",
+                options: [
+                    "Posterior rami of spinal nerves",
+                    "Intercostal nerves",
+                    "Anterior rami of cervical nerves",
+                    "Spinal accessory nerve only"
+                ],
+                answer: 2,
+                explanation: "Page 27"
+            },
+            {
+                question: "The trapezius muscle is unique among the superficial extrinsic back muscles because it receives its nerve supply from which nerve?",
+                options: [
+                    "The anterior ramus of C1",
+                    "The spinal accessory nerve",
+                    "The dorsal scapular nerve",
+                    "The thoracodorsal nerve"
+                ],
+                answer: 1,
+                explanation: "Page 27"
+            },
+            {
+                question: "The serratus posterior superior and serratus posterior inferior muscles are classified as which type of back muscles?",
+                options: [
+                    "Intermediate extrinsic",
+                    "Superficial extrinsic",
+                    "Intrinsic (deep)",
+                    "Transverso-spinalis"
+                ],
+                answer: 0,
+                explanation: "Page 29"
+            },
+            {
+                question: "What is the primary action of the intermediate extrinsic back muscles?",
+                options: [
+                    "Control limb movements",
+                    "Maintain posture",
+                    "Act as superficial respiratory muscles",
+                    "Extend the vertebral column"
+                ],
+                answer: 2,
+                explanation: "Page 29"
+            },
+            {
+                question: "The intermediate extrinsic back muscles receive their nerve supply from which nerves?",
+                options: [
+                    "Anterior rami of cervical nerves",
+                    "Posterior rami of spinal nerves",
+                    "Intercostal nerves",
+                    "Spinal accessory nerve"
+                ],
+                answer: 2,
+                explanation: "Page 29"
+            },
+            {
+                question: "The intrinsic (deep) back muscles are primarily responsible for which action?",
+                options: [
+                    "Controlling limb movements",
+                    "Acting as respiratory muscles",
+                    "Connecting the vertebral column to the shoulder girdle",
+                    "Maintaining posture and controlling vertebral column movements"
+                ],
+                answer: 3,
+                explanation: "Page 32"
+            },
+            {
+                question: "All intrinsic back muscles receive their nerve supply from which source?",
+                options: [
+                    "Anterior rami of spinal nerves",
+                    "Posterior rami of spinal nerves",
+                    "Thoracic spinal nerves only",
+                    "Cranial nerves"
+                ],
+                answer: 1,
+                explanation: "Page 32"
+            },
+            {
+                question: "The superficial layer of the intrinsic back muscles includes which muscles?",
+                options: [
+                    "The erector spinae",
+                    "The transverse-spinalis group",
+                    "The splenius muscles (splenius cervicis and capitis)",
+                    "The iliocostalis, longissimus, and spinalis"
+                ],
+                answer: 2,
+                explanation: "Page 33"
+            },
+            {
+                question: "The intermediate layer of the intrinsic back muscles is called the:",
+                options: [
+                    "Transverso-spinalis",
+                    "Splenius",
+                    "Rotatores",
+                    "Erector spinae or Sacrospinalis"
+                ],
+                answer: 3,
+                explanation: "Page 37"
+            },
+            {
+                question: "The erector spinae muscle group has a common origin that includes all of the following EXCEPT:",
+                options: [
+                    "The posterior part of the iliac crest",
+                    "The posterior aspect of the sacrum",
+                    "The transverse processes of all lumbar vertebrae",
+                    "The sacral and inferior lumbar spinous processes"
+                ],
+                answer: 2,
+                explanation: "Page 37"
+            },
+            {
+                question: "What is the primary action of the erector spinae muscles?",
+                options: [
+                    "Rotating the vertebral column",
+                    "Flexing the vertebral column",
+                    "Extending the vertebral column",
+                    "Laterally flexing the vertebral column"
+                ],
+                answer: 2,
+                explanation: "Page 38"
+            },
+            {
+                question: "The erector spinae is divided into three columns. From lateral to medial, they are:",
+                options: [
+                    "Spinalis, Longissimus, Iliocostalis",
+                    "Iliocostalis, Longissimus, Spinalis",
+                    "Longissimus, Iliocostalis, Spinalis",
+                    "Longissimus, Spinalis, Iliocostalis"
+                ],
+                answer: 1,
+                explanation: "Page 38"
+            },
+            {
+                question: "The iliocostalis muscle, a part of the erector spinae, is related to which bony landmark?",
+                options: [
+                    "The spinous processes",
+                    "The transverse processes",
+                    "The back of the ribs at their angles",
+                    "The laminae"
+                ],
+                answer: 2,
+                explanation: "Page 40"
+            },
+            {
+                question: "The longissimus part of the erector spinae is inserted primarily into which structures?",
+                options: [
+                    "The spines of the vertebrae",
+                    "The angles of the ribs",
+                    "The transverse processes",
+                    "The laminae"
+                ],
+                answer: 2,
+                explanation: "Page 41"
+            },
+            {
+                question: "The spinalis part of the erector spinae is inserted primarily into which structures?",
+                options: [
+                    "The spines of the vertebrae",
+                    "The transverse processes",
+                    "The ribs",
+                    "The laminae"
+                ],
+                answer: 0,
+                explanation: "Page 42"
+            },
+            {
+                question: "The deep layer of the intrinsic back muscles is called which muscle group?",
+                options: [
+                    "Erector spinae",
+                    "Splenius",
+                    "Transversospinalis",
+                    "Iliocostalis"
+                ],
+                answer: 2,
+                explanation: "Page 44"
+            },
+            {
+                question: "Muscles of the transverse-spinalis group originate from which part of vertebrae?",
+                options: [
+                    "Spinous processes",
+                    "Transverse processes",
+                    "Vertebral bodies",
+                    "Laminae"
+                ],
+                answer: 1,
+                explanation: "Page 44"
+            },
+            {
+                question: "Muscles of the transverse-spinalis group insert into which part of more superior vertebrae?",
+                options: [
+                    "Transverse processes",
+                    "Vertebral bodies",
+                    "Spinous processes",
+                    "Pedicles"
+                ],
+                answer: 2,
+                explanation: "Page 44"
+            },
+            {
+                question: "The three muscles of the transverse-spinalis group, arranged from superficial to deep, are:",
+                options: [
+                    "Rotatores, Multifidus, Semispinalis",
+                    "Semispinalis, Multifidus, Rotatores",
+                    "Multifidus, Semispinalis, Rotatores",
+                    "Semispinalis, Rotatores, Multifidus"
+                ],
+                answer: 1,
+                explanation: "Page 44"
+            },
+            {
+                question: "The thoraco-lumbar fascia covers which group of muscles?",
+                options: [
+                    "The extrinsic back muscles",
+                    "The deep muscles of the back",
+                    "The abdominal muscles",
+                    "The muscles of the shoulder girdle"
+                ],
+                answer: 1,
+                explanation: "Page 49"
+            },
+            {
+                question: "In the thoracic region, the thoraco-lumbar fascia is described as:",
+                options: [
+                    "A thin fibrous lamina",
+                    "A thick fibrous band",
+                    "A three-layered structure",
+                    "A muscular sheet"
+                ],
+                answer: 0,
+                explanation: "Page 50"
+            },
+            {
+                question: "In the lumbar region, the thoraco-lumbar fascia consists of how many layers?",
+                options: [
+                    "One layer",
+                    "Two layers",
+                    "Three layers",
+                    "Four layers"
+                ],
+                answer: 2,
+                explanation: "Page 50"
+            },
+            {
+                question: "The posterior layer of the lumbar fascia is attached to which structures?",
+                options: [
+                    "The transverse processes of lumbar vertebrae",
+                    "The anterior aspects of the transverse processes",
+                    "The spines of the lumbar and sacral vertebrae",
+                    "The iliac crest"
+                ],
+                answer: 2,
+                explanation: "Page 51"
+            },
+            {
+                question: "The middle layer of the lumbar fascia is attached to the tips of which processes?",
+                options: [
+                    "The spinous processes of lumbar vertebrae",
+                    "The transverse processes of lumbar vertebrae",
+                    "The mamillary processes",
+                    "The accessory processes"
+                ],
+                answer: 1,
+                explanation: "Page 51"
+            },
+            {
+                question: "The anterior layer of the lumbar fascia covers which muscle?",
+                options: [
+                    "Psoas major",
+                    "Erector spinae",
+                    "Quadratus lumborum",
+                    "Transversus abdominis"
+                ],
+                answer: 2,
+                explanation: "Page 51"
+            },
+            {
+                question: "In the lumbar region, the posterior and middle layers of the thoraco-lumbar fascia unite to form the tendon of origin for which muscle?",
+                options: [
+                    "Psoas major",
+                    "Quadratus lumborum",
+                    "Internal oblique",
+                    "Transversus abdominis"
+                ],
+                answer: 3,
+                explanation: "Page 51"
+            }
+        ];
+
+        // Function to shuffle an array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Function to create a randomized version of the quiz data
+        function createRandomizedQuizData() {
+            const randomizedData = [];
+            
+            originalQuizData.forEach(question => {
+                // Create a copy of the original question
+                const randomizedQuestion = {
+                    question: question.question,
+                    options: [...question.options], // Copy options array
+                    originalAnswer: question.answer, // Store original answer index
+                    explanation: question.explanation
+                };
+                
+                // Create an array of indices [0, 1, 2, 3]
+                const indices = [0, 1, 2, 3];
+                
+                // Shuffle the indices
+                shuffleArray(indices);
+                
+                // Create a new options array with shuffled order
+                const shuffledOptions = indices.map(index => question.options[index]);
+                
+                // Find the new position of the correct answer
+                const newAnswerIndex = indices.indexOf(question.answer);
+                
+                // Update the question with shuffled options and new answer
+                randomizedQuestion.options = shuffledOptions;
+                randomizedQuestion.answer = newAnswerIndex;
+                
+                randomizedData.push(randomizedQuestion);
+            });
+            
+            return randomizedData;
+        }
+
+        // Create randomized quiz data
+        let quizData = createRandomizedQuizData();
+
+        // Quiz state variables
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let incorrectQuestions = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const scoreEl = document.getElementById('score');
+        const totalScoreEl = document.getElementById('total-score');
+        const resultsContainer = document.getElementById('results');
+        const finalScoreEl = document.getElementById('final-score');
+        const performanceMessageEl = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        const reviewSection = document.getElementById('review-section');
+        const incorrectQuestionsList = document.getElementById('incorrect-questions-list');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const lightText = document.querySelector('.light-text');
+        const darkText = document.querySelector('.dark-text');
+
+        // Initialize quiz
+        function initQuiz() {
+            totalQuestionsEl.textContent = quizData.length;
+            totalScoreEl.textContent = quizData.length;
+            showQuestion();
+            updateProgressBar();
+            
+            // Initialize dark mode based on system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.checked = true;
+                updateToggleText(true);
+            } else {
+                updateToggleText(false);
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', showPreviousQuestion);
+            nextBtn.addEventListener('click', showNextQuestion);
+            restartBtn.addEventListener('click', restartQuiz);
+            reviewBtn.addEventListener('click', showIncorrectQuestions);
+            darkModeToggle.addEventListener('change', toggleDarkMode);
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            const isDarkMode = darkModeToggle.checked;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            updateToggleText(isDarkMode);
+        }
+
+        // Update toggle text opacity
+        function updateToggleText(isDarkMode) {
+            if (isDarkMode) {
+                lightText.style.opacity = '0.5';
+                darkText.style.opacity = '1';
+            } else {
+                lightText.style.opacity = '1';
+                darkText.style.opacity = '0.5';
+            }
+        }
+
+        // Show current question
+        function showQuestion() {
+            currentQuestionEl.textContent = currentQuestion + 1;
+            scoreEl.textContent = score;
+            
+            const question = quizData[currentQuestion];
+            let optionsHTML = '';
+            
+            question.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionClass += ' selected';
+                    if (index === question.answer) {
+                        optionClass += ' correct';
+                    } else {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div class="${optionClass}" data-index="${index}">
+                        ${String.fromCharCode(65 + index)}) ${option}
+                    </div>
+                `;
+            });
+            
+            let feedbackHTML = '';
+            if (userAnswers[currentQuestion] !== null) {
+                const isCorrect = userAnswers[currentQuestion] === question.answer;
+                const correctLetter = String.fromCharCode(65 + question.answer);
+                const correctAnswerText = question.options[question.answer];
+                
+                feedbackHTML = `
+                    <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+                        ${isCorrect ? '✓ Correct!' : '✗ Incorrect!'} 
+                        ${!isCorrect ? `Correct answer: ${correctLetter}) ${correctAnswerText}` : ''}
+                        <br><br>Explanation: ${question.explanation}
+                    </div>
+                `;
+            }
+            
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-number">Question ${currentQuestion + 1}/${quizData.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">${optionsHTML}</div>
+                    ${feedbackHTML}
+                </div>
+            `;
+            
+            // Add event listeners to options
+            const optionElements = quizContainer.querySelectorAll('.option');
+            optionElements.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish Quiz' : 'Next';
+        }
+
+        // Select an option
+        function selectOption(e) {
+            if (userAnswers[currentQuestion] !== null) return; // Already answered
+            
+            const selectedOption = e.currentTarget;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            
+            userAnswers[currentQuestion] = selectedIndex;
+            
+            // Check if answer is correct
+            if (selectedIndex === quizData[currentQuestion].answer) {
+                score++;
+                scoreEl.textContent = score;
+            } else {
+                // Add to incorrect questions list
+                incorrectQuestions.push({
+                    question: quizData[currentQuestion].question,
+                    userAnswer: selectedIndex,
+                    correctAnswer: quizData[currentQuestion].answer,
+                    options: quizData[currentQuestion].options,
+                    explanation: quizData[currentQuestion].explanation,
+                    questionNumber: currentQuestion + 1
+                });
+            }
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            document.querySelector('.navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            
+            finalScoreEl.textContent = score;
+            
+            // Performance message
+            const percentage = (score / quizData.length) * 100;
+            let message = '';
+            if (percentage >= 80) {
+                message = 'Excellent! You have a strong understanding of Back Muscles.';
+            } else if (percentage >= 60) {
+                message = 'Good job! You have a solid grasp of the material.';
+            } else if (percentage >= 40) {
+                message = 'Not bad! Review the material and try again.';
+            } else {
+                message = 'Keep studying! Review the lectures and try again.';
+            }
+            
+            performanceMessageEl.textContent = message;
+            resultsContainer.style.display = 'block';
+            
+            // Show review button only if there are incorrect answers
+            if (incorrectQuestions.length > 0) {
+                reviewBtn.style.display = 'inline-block';
+            } else {
+                reviewBtn.style.display = 'none';
+            }
+        }
+
+        // Show incorrect questions
+        function showIncorrectQuestions() {
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'block';
+            
+            let incorrectHTML = '';
+            incorrectQuestions.forEach((item, index) => {
+                const correctLetter = String.fromCharCode(65 + item.correctAnswer);
+                const userLetter = String.fromCharCode(65 + item.userAnswer);
+                
+                incorrectHTML += `
+                    <div class="review-question">
+                        <div class="review-question-number">Question ${item.questionNumber}</div>
+                        <div class="review-question-text">${item.question}</div>
+                        <div>Your answer: ${userLetter}) ${item.options[item.userAnswer]}</div>
+                        <div class="review-answer review-correct">Correct answer: ${correctLetter}) ${item.options[item.correctAnswer]}</div>
+                        <div class="review-explanation">${item.explanation}</div>
+                    </div>
+                `;
+            });
+            
+            incorrectQuestionsList.innerHTML = incorrectHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            incorrectQuestions = [];
+            
+            // Re-randomize the quiz data when restarting
+            quizData = createRandomizedQuizData();
+            
+            quizContainer.style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.querySelector('.stats').style.display = 'flex';
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'none';
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Initialize the quiz when the page loads
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
